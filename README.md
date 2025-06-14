@@ -32,7 +32,7 @@ cd FileManager
 
 1. Build the Spring Boot application:
 ```bash
-./mvnw clean package
+./mvnw clean package (or "mvnw.cmd clean package" for Windows)
 ```
 
 This will create the JAR file in the `target` directory that Docker needs.
