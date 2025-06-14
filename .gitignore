@@ -1,0 +1,38 @@
+# Backend (Spring Boot)
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### IntelliJ IDEA ###
+.idea
+
+### VS Code ###
+.vscode/
+
+# Frontend (React/TypeScript)
+node_modules/
+/frontend/dist
+/frontend/build
+/frontend/.env
+/frontend/.DS_Store
+
+# Uploaded files
+uploads/
+src/main/resources/uploads/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment variables
+.env
