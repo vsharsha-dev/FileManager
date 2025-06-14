@@ -1,10 +1,8 @@
-# File Manager Application
+# File Manager Application (Dropbox Clone)
 
 A full-stack file management application built with Spring Boot and React. This application allows users to upload, download, preview, and manage files with a modern web interface.
 
 ## Prerequisites
-
-Before you begin, ensure you have the following installed:
 - Java 17 or higher
 - Node.js 16 or higher
 - Docker and Docker Compose
@@ -14,11 +12,11 @@ Before you begin, ensure you have the following installed:
 ## Project Structure
 
 ```
-filemanager/
+FileManager/
 ├── frontend/           # React frontend application
 ├── src/               # Spring Boot backend application
 ├── docker-compose.yml # Docker configuration for database
-└── README.md         # This file
+└── README.md
 ```
 
 ## Setup Instructions
@@ -26,43 +24,36 @@ filemanager/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/filemanager.git
-cd filemanager
+git clone https://github.com/vsharsha-dev/FileManager.git
+cd FileManager
 ```
 
-### 2. Start the Database
+### 2. Build the Backend
 
-The application uses PostgreSQL as its database. Start it using Docker Compose:
+1. Build the Spring Boot application:
+```bash
+./mvnw clean package
+```
+
+This will create the JAR file in the `target` directory that Docker needs.
+
+### 3. Start the Database and Backend
+
+The application uses PostgreSQL as its database. Start both the database and backend using Docker Compose:
 
 ```bash
 docker-compose up -d
 ```
 
-This will start PostgreSQL in a Docker container. The database will be accessible at:
-- Host: localhost
-- Port: 5432
-- Database: filemanager
-- Username: postgres
-- Password: postgres
-
-### 3. Set Up the Backend
-
-1. Navigate to the project root directory:
-```bash
-cd filemanager
-```
-
-2. Build the Spring Boot application:
-```bash
-./mvnw clean install
-```
-
-3. Run the Spring Boot application:
-```bash
-./mvnw spring-boot:run
-```
-
-The backend server will start on `http://localhost:8080`
+This will:
+- Start PostgreSQL in a Docker container
+- Build and start the Spring Boot application
+- The database will be accessible at:
+  - Host: localhost
+  - Port: 5432
+  - Database: filemanager
+  - Username: user
+  - Password: password
 
 ### 4. Set Up the Frontend
 
@@ -106,7 +97,6 @@ The frontend application will start on `http://localhost:3000`
 - **File Preview**:
   - Text files: View content directly in the browser
   - Images: View in the browser
-  - Other file types: Download to view
 
 ## Stopping the Application
 
@@ -115,10 +105,7 @@ To stop the application:
 1. Stop the frontend (Vite) development server:
    - Press `Ctrl+C` in the frontend terminal
 
-2. Stop the Spring Boot backend:
-   - Press `Ctrl+C` in the backend terminal
-
-3. Stop the database:
+2. Stop the backend and database:
 ```bash
 docker-compose down
 ```
@@ -145,11 +132,10 @@ docker-compose down -v
    - Check if the uploads directory exists and has proper permissions
    - Verify file size limits in `application.properties`
 
-### Logs
+4. **Docker Build Issues**
+   - Make sure you've built the Spring Boot application with `./mvnw clean package` before running `docker-compose up`
+   - Check if the JAR file exists in the `target` directory
 
-- Backend logs: Check the console where Spring Boot is running
-- Frontend logs: Check the browser's developer console (F12)
-- Database logs: `docker-compose logs db`
 
 ## Development
 
@@ -166,15 +152,3 @@ docker-compose down -v
 - Components: `frontend/src/components/`
 - Services: `frontend/src/services/`
 - Types: `frontend/src/types/`
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
