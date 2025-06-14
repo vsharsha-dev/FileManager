@@ -98,6 +98,8 @@ The frontend application will start on `http://localhost:3000`
   - Text files: View content directly in the browser
   - Images: View in the browser
 
+- Note: As User Authentication is not under requirements, the files are currently stored and read from local docker instance
+
 ## Stopping the Application
 
 To stop the application:
